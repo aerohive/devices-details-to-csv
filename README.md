@@ -18,12 +18,11 @@ To run the script, you'll need to :
 
 # RESULT EXAMPLE
 ```
-# Start of Output
-
-#alarmEvents,configType,connected,cpuUsage,defaultGateway,deviceId,deviceTemplate,dns,hostName,ip,lastUpdated,latitude,locationId,locations,longitude,macAddress,memUsage,mgmtStatus,mode,model,ntp,osVersion,ownerId,policy,serialId,simulatedDevice,subnetMask,upTime
-{"time":"2017-09-22T17:41:10.879Z";"entityId":50818053000000;"severity":"CRITICAL";"category":"Device Disconnected";"hostname":"SR2208P-Test";"deviceMac":"B87CF2000000";"clientMac":"";"description":"Disconnect message from HiveAgent"},,true,,,50818053000000,Test.sr2208P,,SR2208P-Test,172.16.227.42,2017-09-22T17:39:27.824Z,,50818053000000,,,B87CF2000000,,MANAGED,,SR_2208P,0.aerohive.pool.ntp.org,1.0.1.22,11832,void,22081604000000,false,255.255.255.0,
-,DHCP_CLIENT_WITHOUT_FALLBACK,true,2,172.16.227.1,50818053000000,Test.AP130.Test,192.168.0.1,AP130-Test,172.16.227.23,2017-09-19T14:57:19.053Z,,50818053000000,,,885BDD000000,46,MANAGED,MP,AP_130,0.aerohive.pool.ntp.org,8.1.1.0,11832,Test-Test,0130160000000,false,255.255.255.0,
-,DHCP_CLIENT_WITHOUT_FALLBACK,true,1,172.16.227.1,50818053000000,Test.AP250,208.67.222.222,AP250-Portal,172.16.227.17,2017-09-01T14:57:56.329Z,,50818053000000,,,C413E2000000,33,MANAGED,PORTAL,AP_250,0.aerohive.pool.ntp.org,8.1.1.0,11832,Test,02501602000000,false,255.255.255.0,
+#Start of Output
+#serialId,model,osVersion,macAddress,hostName,ip,subnetMask,defaultGateway,dns,ntp,cpuUsage,memUsage,connected,policy,upTime
+01301601000000,AP_130,8.1.1.0,885BDD000000,AP130-Test,172.16.227.23,255.255.255.0,172.16.227.1,192.168.0.1,0.aerohive.pool.ntp.org,2,47,true,Test-mesh,
+22081604000000,SR_2208P,1.0.1.22,B87CF2000000,SR2208P-Test,172.16.227.42,255.255.255.0,,,0.aerohive.pool.ntp.org,,,true,void,
+02501602000000,AP_250,8.1.1.0,C413E2000000,AP250-Test,172.16.227.17,255.255.255.0,172.16.227.1,208.67.222.222,0.aerohive.pool.ntp.org,1,33,true,Test,
 
 #Total # of Devices: 4
 #Total # of Real Devices: 3
