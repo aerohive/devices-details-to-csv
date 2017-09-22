@@ -19,10 +19,10 @@ To run the script, you'll need to :
 # RESULT EXAMPLE
 ```
 #Start of Output
-#serialId,model,osVersion,macAddress,hostName,ip,subnetMask,defaultGateway,dns,ntp,cpuUsage,memUsage,connected,policy,upTime
-01301601000000,AP_130,8.1.1.0,885BDD000000,AP130-Test,172.16.227.23,255.255.255.0,172.16.227.1,192.168.0.1,0.aerohive.pool.ntp.org,2,47,true,Test-mesh,
-22081604000000,SR_2208P,1.0.1.22,B87CF2000000,SR2208P-Test,172.16.227.42,255.255.255.0,,,0.aerohive.pool.ntp.org,,,true,void,
-02501602000000,AP_250,8.1.1.0,C413E2000000,AP250-Test,172.16.227.17,255.255.255.0,172.16.227.1,208.67.222.222,0.aerohive.pool.ntp.org,1,33,true,Test,
+#serialId,model,osVersion,macAddress,hostName,ip,subnetMask,defaultGateway,dns,ntp,cpuUsage,memUsage,connected,policy
+01301601000000,AP_130,8.1.1.0,885BDD000000,AP130-Test,172.16.227.23,255.255.255.0,172.16.227.1,192.168.0.1,0.aerohive.pool.ntp.org,2,47,true,Test-mesh
+22081604000000,SR_2208P,1.0.1.22,B87CF2000000,SR2208P-Test,172.16.227.42,255.255.255.0,,,0.aerohive.pool.ntp.org,,,true,void
+02501602000000,AP_250,8.1.1.0,C413E2000000,AP250-Test,172.16.227.17,255.255.255.0,172.16.227.1,208.67.222.222,0.aerohive.pool.ntp.org,1,33,true,Test
 
 #Total # of Devices: 4
 #Total # of Real Devices: 3

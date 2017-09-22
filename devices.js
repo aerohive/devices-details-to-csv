@@ -30,7 +30,7 @@ var serverFQDN = "cloud-ie.aerohive.com";
 //In NG, go to "Global Settings > API Token Management" and create your token
 var accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 //The ownerId is the "VHM Id" value in the "About" menu from NG interface
-var ownerId = "xxxxxx";
+var ownerId = "12345";
 
 
 // #################### CSV parameters #################
@@ -244,7 +244,6 @@ function getDevices(paginationOffsetParam, csvParam) {
     if (csv.devicesCount < pagination.totalCount) getDevices(paginationOffset + 1, csv)
     else {
       // Generate the line with the CSV fields names
-      console.log("#Required fields and fields order for CSV import to HMNG:\r");
       console.log('#Start of Output\r');
       let fieldsString = "#";
       for (let fieldIndex in csvFields) {
