@@ -73,9 +73,6 @@ var csvFields = [
 
 
 
-
-
-
 /* #####################################################
  * ####################### SCRIPT ######################
  * ##################################################### */
@@ -153,24 +150,26 @@ function httpRequest(options, cb) {
           var dataJSON = JSON.parse(data);
           result.data = dataJSON.data;
           result.error = dataJSON.error;
+          result.pagination = dataJSON.pagination;
         } catch (error) {
+          console.log(error);
           result.data = null;
-          result.error = {};
+          result.error = error;
         } finally {
           switch (result.result.status) {
             case 200:
-              callback(null, result.data);
+              cb(result);
               break;
             default:
               var error = {};
-              if (result.error.status) error.status = result.error.status;
+              if (result.error && result.error.status) error.status = result.error.status;
               else error.status = result.result.status;
-              if (result.error.message) error.message = result.error.message;
+              if (result.error && result.error.message) error.message = result.error.message;
               else error.message = result.error;
-              if (result.error.code) error.code = result.error.code;
+              if (result.error && result.error.code) error.code = result.error.code;
               else error.code = "";
               console.error("\x1b[31mRESPONSE ERROR\x1b[0m:", JSON.stringify(error));
-              callback(error, result.data);
+              cb(result);
               break;
           }
         }
@@ -199,20 +198,20 @@ function parseDevices(paginationOffset, result, csv, cb) {
             for (let locationIndex in deviceValue) {
               if (locationIndex != 0) {
                 value += deviceValue[locationIndex];
-                if (locationIndex != deviceValue.length - 1) value += "|"
+                if (locationIndex != deviceValue.length - 1) value += "|";
               }
             }
           } else if (csvFields[fieldIndex] == "alarmEvents") {
             for (let alarmIndex in deviceValue) {
               value += JSON.stringify(deviceValue[alarmIndex]).replace(/,/g, ";");
-              if (alarmIndex != deviceValue.length - 1) value += "|"
+              if (alarmIndex != deviceValue.length - 1) value += "|";
             }
           } else if (deviceValue != undefined && value != "null") value = deviceValue;
 
           csv.outputString += value;
 
           if (fieldIndex != csvFields.length - 1) csv.outputString += ",";
-          else csv.outputString += "\r\n"
+          else csv.outputString += "\r\n";
         }
         csv.realDevicesCount++;
         done++;
@@ -263,3 +262,4 @@ function getDevices(paginationOffsetParam, csvParam) {
 
 // ENTRY POINT
 getDevices(0);
+
