@@ -76,7 +76,6 @@ var csvFields = [
 
 
 
-
 /* #####################################################
  * ####################### SCRIPT ######################
  * ##################################################### */
@@ -99,8 +98,8 @@ function requestDevicesDetails(deviceId, cb) {
     }
   };
   httpRequest(monitor_devices_options, function (result) {
-    cb(result.data)
-  })
+    cb(result.data);
+  });
 }
 
 function requestDevicesList(paginationOffset, csv, cb) {
@@ -117,10 +116,9 @@ function requestDevicesList(paginationOffset, csv, cb) {
     }
   };
   httpRequest(monitor_devices_options, function (result) {
-    parseDevices(paginationOffset, result, csv, cb)
-  })
+    parseDevices(paginationOffset, result, csv, cb);
+  });
 }
-
 
 function httpRequest(options, cb) {
   var result = {};
@@ -152,31 +150,32 @@ function httpRequest(options, cb) {
         if (data.length > 400) console.info("\x1b[34mRESPONSE DATA\x1b[0m:", data.substr(0, 400) + '...');
         else console.info("\x1b[34mRESPONSE DATA\x1b[0m:", data);
         try {
-            var dataJSON = JSON.parse(data);
-            result.data = dataJSON.data;
-            result.error = dataJSON.error;
+          var dataJSON = JSON.parse(data);
+          result.data = dataJSON.data;
+          result.error = dataJSON.error;
         } catch (error) {
-            result.data = null;
-            result.error = {};
+          result.data = null;
+          result.error = {};
         } finally {
-            switch (result.result.status) {
-                case 200:
-                    callback(null, result.data);
-                    break;
-                default:
-                    var error = {};
-                    if (result.error.status) error.status = result.error.status;
-                    else error.status = result.result.status;
-                    if (result.error.message) error.message = result.error.message;
-                    else error.message = result.error;
-                    if (result.error.code) error.code = result.error.code;
-                    else error.code = "";
-                    console.error("\x1b[31mRESPONSE ERROR\x1b[0m:", JSON.stringify(error));
-                    callback(error, result.data);
-                    break;
-            }
+          switch (result.result.status) {
+            case 200:
+              callback(null, result.data);
+              break;
+            default:
+              var error = {};
+              if (result.error.status) error.status = result.error.status;
+              else error.status = result.result.status;
+              if (result.error.message) error.message = result.error.message;
+              else error.message = result.error;
+              if (result.error.code) error.code = result.error.code;
+              else error.code = "";
+              console.error("\x1b[31mRESPONSE ERROR\x1b[0m:", JSON.stringify(error));
+              callback(error, result.data);
+              break;
+          }
         }
-    }
+      }
+    });
   });
   req.end();
 }
@@ -205,8 +204,8 @@ function parseDevices(paginationOffset, result, csv, cb) {
             }
           } else if (csvFields[fieldIndex] == "alarmEvents") {
             for (let alarmIndex in deviceValue) {
-                value += JSON.stringify(deviceValue[alarmIndex]).replace(/,/g,";" );
-                if (alarmIndex != deviceValue.length - 1) value += "|"              
+              value += JSON.stringify(deviceValue[alarmIndex]).replace(/,/g, ";");
+              if (alarmIndex != deviceValue.length - 1) value += "|"
             }
           } else if (deviceValue != undefined && value != "null") value = deviceValue;
 
@@ -219,8 +218,7 @@ function parseDevices(paginationOffset, result, csv, cb) {
         done++;
         if (done == result.data.length) cb(paginationOffset, result.pagination, csv);
       })
-    }
-    else {
+    } else {
       done++;
       if (done == result.data.length) cb(paginationOffset, result.pagination, csv);
     }
@@ -265,5 +263,3 @@ function getDevices(paginationOffsetParam, csvParam) {
 
 // ENTRY POINT
 getDevices(0);
-
-
