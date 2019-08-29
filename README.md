@@ -1,3 +1,6 @@
+# NO LONGER MAINTAINED
+As of August 30, 2019 this project is no longer maintained. It should still (probably) work, but I am no longer providing support, fixing issues, or adding new features.
+
 # SYNOPSYS
 This script is designed to help Aerohive Administrators to get the devices details to a CSV file. It can be used with Windows, Linux and MacOs.
 The script will only save REAL devices (opposed to SIMULATED devices), and can save devices' information like the Hostname, the IP Address, the Location, CPU and memory load, ...
